@@ -5,7 +5,6 @@ import requests
 import ezgmail
 from playsound import playsound
 
-import secrets  # from secrets.py in this folder
 def get_page_html(url):
     headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}
     page = requests.get(url, headers=headers)
@@ -31,10 +30,6 @@ def check_appt_available(page_html):
             break
     
     return False
-# TODO Need to check all appointment sites - div:nth-child(#)
-
-
-# body > div.main-container > div.mt-24.pt-4.border-t.border-gray-200 > div:nth-child(1) > div > div > h4
 
 def send_notification():
     ezgmail.send('rybrnet@gmail.com', 'Appointment Available!', 'Put info here')
